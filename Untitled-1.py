@@ -1,38 +1,49 @@
-def calculate_grade(avg):
-    if avg >= 90:
-        return "A+"
-    elif avg >= 80:
-        return "A"
-    elif avg >= 70:
-        return "B"
-    elif avg >= 60:
-        return "C"
+class BankAccount:
+    def __init__(self, name, balance=0):
+        self.name = name
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited: {amount}")
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient balance!")
+        else:
+            self.balance -= amount
+            print(f"Withdrawn: {amount}")
+
+    def show_balance(self):
+        print(f"Current Balance: {self.balance}")
+
+print("=== Bank Account Simulator ===")
+
+name = input("Enter account holder name: ")
+account = BankAccount(name)
+
+while True:
+    print("\n1. Deposit")
+    print("2. Withdraw")
+    print("3. Balance")
+    print("4. Exit")
+
+    choice = input("Choose option: ")
+
+    if choice == "1":
+        amt = float(input("Enter amount: "))
+        account.deposit(amt)
+
+    elif choice == "2":
+        amt = float(input("Enter amount: "))
+        account.withdraw(amt)
+
+    elif choice == "3":
+        account.show_balance()
+
+    elif choice == "4":
+        print("Thank you!")
+        break
+
     else:
-        return "Fail"
-
-
-print("===== Student Marks Analyzer =====")
-
-n = int(input("Enter number of students: "))
-
-for i in range(n):
-    print(f"\nStudent {i+1}")
-
-    name = input("Enter student name: ")
-
-    m1 = float(input("Enter marks 1: "))
-    m2 = float(input("Enter marks 2: "))
-    m3 = float(input("Enter marks 3: "))
-
-    total = m1 + m2 + m3
-    average = total / 3
-
-    grade = calculate_grade(average)
-
-    print("\n--- Result ---")
-    print("Name:", name)
-    print("Total:", total)
-    print("Average:", round(average, 2))
-    print("Grade:", grade)
-
-print("\nProgram finished.")
+        print("Invalid choice")
