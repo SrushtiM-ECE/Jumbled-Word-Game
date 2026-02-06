@@ -1,51 +1,48 @@
-print("Welcome to Simple Quiz App")
+# To-Do List Manager
 
-name = input("Enter your name: ")
+tasks = []
 
-score = 0
+def add_task():
+    task = input("Enter new task: ")
+    tasks.append(task)
+    print("Task added!\n")
 
-print("\nAnswer the following questions:")
+def view_tasks():
+    if not tasks:
+        print("No tasks available.\n")
+        return
 
-# Question 1
-print("\n1. What is the capital of India?")
-print("a) Mumbai")
-print("b) Delhi")
-print("c) Chennai")
+    print("\n--- Your Tasks ---")
+    for i, task in enumerate(tasks, start=1):
+        print(i, ".", task)
+    print()
 
-ans1 = input("Your answer: ")
+def delete_task():
+    view_tasks()
+    if tasks:
+        num = int(input("Enter task number to delete: "))
+        if 1 <= num <= len(tasks):
+            removed = tasks.pop(num - 1)
+            print("Removed:", removed, "\n")
+        else:
+            print("Invalid number!\n")
 
-if ans1.lower() == "b":
-    score += 1
+while True:
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Delete Task")
+    print("4. Exit")
 
-# Question 2
-print("\n2. Which language is used for Data Science?")
-print("a) Python")
-print("b) HTML")
-print("c) CSS")
+    choice = input("Choose option: ")
 
-ans2 = input("Your answer: ")
-
-if ans2.lower() == "a":
-    score += 1
-
-# Question 3
-print("\n3. What is 10 + 20?")
-print("a) 20")
-print("b) 25")
-print("c) 30")
-
-ans3 = input("Your answer: ")
-
-if ans3.lower() == "c":
-    score += 1
-
-print("\nQuiz Finished")
-print("Name:", name)
-print("Your Score:", score, "/3")
-
-if score == 3:
-    print("Excellent")
-elif score == 2:
-    print("Good")
-else:
-    print("Keep practicing")
+    if choice == "1":
+        add_task()
+    elif choice == "2":
+        view_tasks()
+    elif choice == "3":
+        delete_task()
+    elif choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice!\n")
