@@ -1,30 +1,45 @@
-# Password Strength Checker
+tasks = []
 
-password = input("Enter a password: ")
+def show_menu():
+    print("\n---- TO-DO LIST MENU ----")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Remove Task")
+    print("4. Exit")
 
-has_upper = False
-has_lower = False
-has_digit = False
-has_special = False
-special_chars = "!@#$%^&*()_+-="
+while True:
+    show_menu()
+    choice = input("Enter your choice (1-4): ")
 
-for char in password:
-    if char.isupper():
-        has_upper = True
-    elif char.islower():
-        has_lower = True
-    elif char.isdigit():
-        has_digit = True
-    elif char in special_chars:
-        has_special = True
+    if choice == "1":
+        task = input("Enter new task: ")
+        tasks.append(task)
+        print("Task added successfully!")
 
-if len(password) >= 8 and has_upper and has_lower and has_digit and has_special:
-    print("✅ Strong Password")
-else:
-    print("❌ Weak Password")
-    print("Password should contain:")
-    print("- At least 8 characters")
-    print("- One uppercase letter")
-    print("- One lowercase letter")
-    print("- One digit")
-    print("- One special character")
+    elif choice == "2":
+        if len(tasks) == 0:
+            print("No tasks available.")
+        else:
+            print("\nYour Tasks:")
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task}")
+
+    elif choice == "3":
+        if len(tasks) == 0:
+            print("No tasks to remove.")
+        else:
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task}")
+            num = int(input("Enter task number to remove: "))
+            if 1 <= num <= len(tasks):
+                removed = tasks.pop(num - 1)
+                print(f"Task '{removed}' removed successfully!")
+            else:
+                print("Invalid task number.")
+
+    elif choice == "4":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please try again.
