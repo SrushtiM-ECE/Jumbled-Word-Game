@@ -1,0 +1,16 @@
+expenses = {
+    "Food": 250,
+    "Transport": 120,
+    "Books": 450,
+    "Snacks": 80
+}
+
+total = sum(expenses.values())
+print("Total Expense:", total)
+
+highest = max(expenses, key=expenses.get)
+print("Highest Expense Category:", highest)
+
+print("\nAll Expenses:")
+for item, cost in expenses.items():
+    print(item, ":", cost)
