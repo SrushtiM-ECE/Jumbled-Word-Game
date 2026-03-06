@@ -1,0 +1,20 @@
+students = {
+    "Rahul": 78,
+    "Anita": 92,
+    "Kiran": 56,
+    "Meena": 88,
+    "Arjun": 45
+}
+
+average = sum(students.values()) / len(students)
+print("Average Marks:", average)
+
+print("\nTop Performers:")
+for name, marks in students.items():
+    if marks > 80:
+        print(name, marks)
+
+print("\nStudents Needing Improvement:")
+for name, marks in students.items():
+    if marks < 60:
+        print(name, marks)
