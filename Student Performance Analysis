@@ -1,0 +1,24 @@
+Name = input("Enter a name:")
+maths = int(input("enter the marks of maths:"))
+science =  int(input("enter the marks of science:"))
+English =  int(input("enter the marks of english:"))
+total = maths+science+English
+average = total/3
+if maths<35 or science<35 or English<35:
+    result="Fail"
+else:
+    result="Pass"
+if average>=80:
+    performance = "Excellent"
+elif average>=60:
+    performance = "Good"
+elif average>=40:
+    performance = "Average"
+else: 
+    performance = "Poor"
+print("\n---Student Result---")
+print("Name:",Name)
+print("Total Marks:", total)
+print("Average:", average)
+print("Result:", result)
+print("Performance:", performance)
